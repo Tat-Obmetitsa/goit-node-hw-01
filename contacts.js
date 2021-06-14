@@ -30,7 +30,7 @@ function removeContact(contactId) {
   const contacts = JSON.parse(data);
   const contactsFilter = contacts.filter(contact => contact.id != contactId);
   fs.writeFile(contactsPath, JSON.stringify(contactsFilter, null, '\t'));
-  console.log('Contact is removed');
+  console.table(contactsFilter);
   })
   .catch((err) => console.error(err));
 }
@@ -47,7 +47,7 @@ function addContact(name, email, phone) {
   const contacts = JSON.parse(data)
   const users = [...contacts, user]
   fs.writeFile(contactsPath, JSON.stringify(users, null, '\t'));
-  console.log('Contact is added');
+  console.table(users);
   })
   .catch((err) => console.error(err));
 }
